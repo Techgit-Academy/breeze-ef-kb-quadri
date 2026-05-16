@@ -1,6 +1,6 @@
 export const CATS = [
   {
-    id: 'C1', color: '#1B3A6B', badge: 'CRITICAL', bt: 'red',
+    id: 'C1', color: '#1B3A6B', badge: 'CRITICAL', badgeType: 'red',
     tickets: 420, pct: '26%',
     title: 'Loans — EWA, Maxi and Flexi',
     why: `This is where employees come when something goes wrong with a loan. They can't apply, the money hasn't arrived, too much was deducted, or they want to pay it off early. This topic covers the full loan journey from start to finish.`,
@@ -68,7 +68,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C2', color: '#0D7C8F', badge: 'CRITICAL', bt: 'red',
+    id: 'C2', color: '#0D7C8F', badge: 'CRITICAL', badgeType: 'red',
     tickets: 606, pct: '37%',
     title: 'Payments and payroll',
     why: `This is the biggest topic in the KB. It covers everything that can go wrong when an employer runs payroll — salaries not going through, employees being paid twice, pension payments stuck. Most of these complaints come from HR Admins managing payroll on behalf of their organisation.`,
@@ -110,7 +110,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C3', color: '#2E7D32', badge: 'HIGH', bt: 'blue',
+    id: 'C3', color: '#2E7D32', badge: 'HIGH', badgeType: 'blue',
     tickets: 180, pct: '11%',
     title: 'Getting into the app and platform',
     why: `This covers everything related to logging in, verifying identity, and reaching the right part of the platform. If someone can't get in, they can't do anything else — which is why this often sits behind other complaints like loan access or payment failures.`,
@@ -157,7 +157,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C4', color: '#6D4C41', badge: 'MEDIUM', bt: 'amber',
+    id: 'C4', color: '#6D4C41', badge: 'MEDIUM', badgeType: 'amber',
     tickets: 90, pct: '6%',
     title: 'Account statements and transaction records',
     why: `Customers and HR Admins often need a record of what happened — a statement to send to their bank, proof of a pension payment, or a transaction history for reconciliation. This topic covers how to get those records and what to do when they're incomplete.`,
@@ -184,7 +184,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C5', color: '#6A1B9A', badge: 'HIGH', bt: 'blue',
+    id: 'C5', color: '#6A1B9A', badge: 'HIGH', badgeType: 'blue',
     tickets: 179, pct: '11%',
     title: 'Getting started and learning how to use Breeze',
     why: `A significant number of tickets — 167 to be precise — were filed not because something was broken, but because the person didn't know how to do it. This is the most impactful area to invest in early. Getting people set up correctly and teaching them how to use the product prevents a large chunk of complaints from being raised in the first place.`,
@@ -232,7 +232,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C6', color: '#B71C1C', badge: 'HIGH', bt: 'blue',
+    id: 'C6', color: '#B71C1C', badge: 'HIGH', badgeType: 'blue',
     tickets: 214, pct: '13%',
     title: 'Escalation guides (for the support team)',
     why: `This section is for support agents only — customers will not see it. It contains the decision trees that tell an agent when to handle a ticket themselves and when to pass it up the chain, plus templates for filing proper bug reports so Engineering gets the information they need.`,
@@ -269,7 +269,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C7', color: '#E65100', badge: 'HIGH', bt: 'blue',
+    id: 'C7', color: '#E65100', badge: 'HIGH', badgeType: 'blue',
     tickets: 134, pct: '8%',
     title: 'Known problems and outages',
     why: `When something breaks across multiple customers at the same time, agents need to recognise it quickly and communicate it clearly. This section keeps a live record of known issues and gives agents ready-to-send messages so no one has to write something from scratch under pressure.`,
@@ -307,33 +307,33 @@ export const RELS = [
 ];
 
 export const FIXES = [
-  { icon: '⏱', title: "Payroll has been 'processing' for too long", steps: [
+  { icon: '⏱', title: "Payroll has been 'processing' for too long", body: [
     { type: 'p', text: "This is the most common complaint from HR Admins. Here is how to handle it." },
     { type: 'ol', items: ["Go to the employee list for that payroll run. Look for any employee who has no bank account number on their profile, or whose account number hasn't been validated. Even one missing account can hold up the whole batch.", "For pension payments specifically — the PFA takes 24 to 48 business hours to process. If it's been less than two business days, this is normal. Let the customer know.", "If this is a payroll run that's been processing for more than four hours and all account numbers are confirmed, raise it through the payment escalation guide (C6.1.1). This goes to EF Ops, not Engineering."] },
     { type: 'tip', text: "If you're seeing the same 'stuck processing' issue across more than one company at the same time, check C7.2 before raising individual escalations. It may already be a known issue." }
   ]},
-  { icon: '✋', title: "'Apply for loan' button won't work — or the loan option is missing entirely", steps: [
+  { icon: '✋', title: "'Apply for loan' button won't work — or the loan option is missing entirely", body: [
     { type: 'p', text: "These are two different problems. Diagnose before responding." },
     { type: 'p', text: "If the button is there but won't respond when tapped: close the app fully, clear the cache, reopen on Wi-Fi. If still broken after two tries, file a bug report using C6.2.1 with the employee's user ID and employer name." },
     { type: 'p', text: "If the loan option is not showing at all:" },
     { type: 'ol', items: ["Confirm the Marketplace has been switched on for their organisation — this is the most common reason.", "Confirm the employee has completed identity verification (KYC).", "Check whether the employee already has an active loan — a second application is blocked until the first is cleared.", "Check the employee's payroll status in HRIS — if recently changed or inactive, eligibility resets."] }
   ]},
-  { icon: '🔄', title: "Direct debit mandate failing during loan application", steps: [
+  { icon: '🔄', title: "Direct debit mandate failing during loan application", body: [
     { type: 'p', text: "The direct debit mandate is a required step inside the loan application. If it fails, the application cannot complete. Try these steps before escalating." },
     { type: 'ol', items: ["Confirm the bank is on the supported list for direct debit on Breeze. Some smaller banks are not supported — the customer needs to use a different account.", "Timing matters. Bank APIs are busiest between 9am and 12pm on business days. Ask the customer to try again in the evening.", "Check that the BVN linked to the bank account exactly matches the BVN on the Breeze profile. Even a small mismatch causes a silent timeout with no error message.", "If two attempts at different times still fail and the bank is supported, raise through C6.1.2 — this is a loan escalation to EF Ops, not Engineering."] },
     { type: 'tip', text: "This issue is logged in C7.2.3. Check there first — if it's a known active issue, use the outage message template in C7.1.2 to respond to the customer." }
   ]},
-  { icon: '📵', title: "Customer is not receiving their OTP", steps: [
+  { icon: '📵', title: "Customer is not receiving their OTP", body: [
     { type: 'p', text: "This comes up in both login (C3) and loan applications (C1.2.3). The diagnosis is the same for both." },
     { type: 'ol', items: ["Check the phone number on the account — about 40% of OTP complaints are resolved here.", "Ask if mobile data is turned on. Some Nigerian networks — especially MTN — block SMS when data is active. Turn off data, then request OTP again.", "Wait a full 60 seconds before using 'Resend OTP'. Repeated taps trigger a rate limit that blocks all OTPs for 15 minutes.", "If still not received after two attempts, file a C6.2.3 bug report with the phone number (masked), network carrier, number of attempts, and timestamp."] },
     { type: 'tip', text: "Check C7.2 if multiple customers report OTP issues at the same time — it may be a network-level incident." }
   ]},
-  { icon: '💰', title: "An employee has been paid twice", steps: [
+  { icon: '💰', title: "An employee has been paid twice", body: [
     { type: 'p', text: "Act quickly — recovery gets harder the longer it sits." },
     { type: 'ol', items: ["Confirm the duplication — pull the disbursement log in Breeze Payer and find both transaction entries for the same employee in the same cycle.", "Do not try to reverse the payment yourself. There is no self-service reversal. Raise to EF Ops immediately through C6.1.1, sharing both transaction IDs.", "Let the HR Admin know the three recovery routes: deduct from next payroll, ask employee to transfer back, or EF Ops initiates a reversal. EF Ops will advise which is fastest."] },
     { type: 'tip', text: "If this has happened before for the same employer, note it in C7.2 — a pattern may point to a configuration issue for Engineering." }
   ]},
-  { icon: '📄', title: "Statement downloaded but transactions are missing", steps: [
+  { icon: '📄', title: "Statement downloaded but transactions are missing", body: [
     { type: 'p', text: "This is a known bug Engineering is aware of. Here's how to help the customer in the meantime." },
     { type: 'ol', items: ["Ask the customer to try a shorter date range — one month at a time instead of six.", "Try CSV instead of PDF — the missing entry bug affects the PDF generator more often.", "For official purposes, EF Ops can generate a manual statement with full transaction history. Request through the internal support channel, not Engineering.", "When filing C6.2.4, note exactly which dates and amounts are missing — the more specific, the faster Engineering can fix it."] }
   ]},
