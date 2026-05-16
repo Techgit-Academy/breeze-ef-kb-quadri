@@ -1,9 +1,9 @@
 export const CATS = [
   {
-    id: 'C1', color: '#1B3A6B', badge: 'CRITICAL', badgeType: 'red',
+    id: 'C1', color: '#1B3A6B', badge: 'CRITICAL', bt: 'red',
     tickets: 420, pct: '26%',
     title: 'Loans — EWA, Maxi and Flexi',
-    why: `This is where employees come when something goes wrong with a loan. They can't apply, the money hasn't arrived, too much was deducted, or they want to pay it off early. This topic covers the full loan journey from start to finish — including setting up direct debit, which is how repayments happen automatically.`,
+    why: `This is where employees come when something goes wrong with a loan. They can't apply, the money hasn't arrived, too much was deducted, or they want to pay it off early. This topic covers the full loan journey from start to finish.`,
     subs: [
       {
         id: 'C1.1', lbl: 'Accessing and qualifying for a loan',
@@ -18,14 +18,17 @@ export const CATS = [
         ]
       },
       {
-        id: 'C1.2', lbl: 'Problems during the loan application',
-        note: "Articles for employees who started applying but hit an error, got no money, or are confused about how much they can borrow.",
+        id: 'C1.2', lbl: 'During the loan application — including direct debit setup',
+        note: "Articles for employees going through the application process. Direct debit mandate setup happens here — it is a required step before the loan can be approved.",
         arts: [
           { n: 'C1.2.1', t: "I got an error while applying for a loan — what does it mean?", w: 'Employee' },
           { n: 'C1.2.2', t: "I completed my application but no money came", w: 'Employee' },
           { n: 'C1.2.3', t: "I didn't receive the OTP to confirm my loan", w: 'Employee' },
           { n: 'C1.2.4', t: "The loan amount showing is different from what I expected", w: 'Employee' },
           { n: 'C1.2.5', t: "Why is my loan limit lower than it should be?", w: 'Employee' },
+          { n: 'C1.2.6', t: "How do I set up a direct debit mandate during my loan application?", w: 'Employee' },
+          { n: 'C1.2.7', t: "My direct debit setup keeps failing or timing out during the application", w: 'Employee' },
+          { n: 'C1.2.8', t: "I can't complete my application because the mandate step won't go through", w: 'Employee' },
         ]
       },
       {
@@ -39,8 +42,8 @@ export const CATS = [
         ]
       },
       {
-        id: 'C1.4', lbl: 'Repayments, direct debit and paying off early',
-        note: "Articles for employees dealing with deductions, setting up direct debit for automatic repayments, clearing a loan early, or a balance that hasn't updated after payment.",
+        id: 'C1.4', lbl: 'Repayments and paying off early',
+        note: "Articles for employees dealing with deductions after the loan is live — wrong amounts, outstanding balance not updating, paying off early, or updating an existing mandate.",
         arts: [
           { n: 'C1.4.1', t: "How does loan repayment work?", w: 'Employee' },
           { n: 'C1.4.2', t: "More money was deducted than my repayment amount", w: 'Employee' },
@@ -48,10 +51,8 @@ export const CATS = [
           { n: 'C1.4.4', t: "I've paid back the loan but it still shows as outstanding", w: 'Employee' },
           { n: 'C1.4.5', t: "Salary deduction happened but loan balance hasn't changed", w: 'HR Admin' },
           { n: 'C1.4.6', t: "Where do I send money to repay my loan manually?", w: 'Employee / HR Admin' },
-          { n: 'C1.4.7', t: "How do I set up a direct debit mandate on Breeze?", w: 'Employee' },
-          { n: 'C1.4.8', t: "My direct debit setup keeps failing or timing out", w: 'Employee' },
-          { n: 'C1.4.9', t: "My mandate is set up but no deduction is happening", w: 'Employee' },
-          { n: 'C1.4.10', t: "How do I update or change an existing direct debit mandate?", w: 'Employee' },
+          { n: 'C1.4.7', t: "My mandate is set up but no deduction is happening", w: 'Employee' },
+          { n: 'C1.4.8', t: "How do I update or change an existing direct debit mandate?", w: 'Employee' },
         ]
       },
       {
@@ -67,7 +68,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C2', color: '#0D7C8F', badge: 'CRITICAL', badgeType: 'red',
+    id: 'C2', color: '#0D7C8F', badge: 'CRITICAL', bt: 'red',
     tickets: 606, pct: '37%',
     title: 'Payments and payroll',
     why: `This is the biggest topic in the KB. It covers everything that can go wrong when an employer runs payroll — salaries not going through, employees being paid twice, pension payments stuck. Most of these complaints come from HR Admins managing payroll on behalf of their organisation.`,
@@ -109,7 +110,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C3', color: '#2E7D32', badge: 'HIGH', badgeType: 'blue',
+    id: 'C3', color: '#2E7D32', badge: 'HIGH', bt: 'blue',
     tickets: 180, pct: '11%',
     title: 'Getting into the app and platform',
     why: `This covers everything related to logging in, verifying identity, and reaching the right part of the platform. If someone can't get in, they can't do anything else — which is why this often sits behind other complaints like loan access or payment failures.`,
@@ -156,7 +157,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C4', color: '#6D4C41', badge: 'MEDIUM', badgeType: 'amber',
+    id: 'C4', color: '#6D4C41', badge: 'MEDIUM', bt: 'amber',
     tickets: 90, pct: '6%',
     title: 'Account statements and transaction records',
     why: `Customers and HR Admins often need a record of what happened — a statement to send to their bank, proof of a pension payment, or a transaction history for reconciliation. This topic covers how to get those records and what to do when they're incomplete.`,
@@ -183,7 +184,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C5', color: '#6A1B9A', badge: 'HIGH', badgeType: 'blue',
+    id: 'C5', color: '#6A1B9A', badge: 'HIGH', bt: 'blue',
     tickets: 179, pct: '11%',
     title: 'Getting started and learning how to use Breeze',
     why: `A significant number of tickets — 167 to be precise — were filed not because something was broken, but because the person didn't know how to do it. This is the most impactful area to invest in early. Getting people set up correctly and teaching them how to use the product prevents a large chunk of complaints from being raised in the first place.`,
@@ -231,7 +232,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C6', color: '#B71C1C', badge: 'HIGH', badgeType: 'blue',
+    id: 'C6', color: '#B71C1C', badge: 'HIGH', bt: 'blue',
     tickets: 214, pct: '13%',
     title: 'Escalation guides (for the support team)',
     why: `This section is for support agents only — customers will not see it. It contains the decision trees that tell an agent when to handle a ticket themselves and when to pass it up the chain, plus templates for filing proper bug reports so Engineering gets the information they need.`,
@@ -268,7 +269,7 @@ export const CATS = [
     ]
   },
   {
-    id: 'C7', color: '#E65100', badge: 'HIGH', badgeType: 'blue',
+    id: 'C7', color: '#E65100', badge: 'HIGH', bt: 'blue',
     tickets: 134, pct: '8%',
     title: 'Known problems and outages',
     why: `When something breaks across multiple customers at the same time, agents need to recognise it quickly and communicate it clearly. This section keeps a live record of known issues and gives agents ready-to-send messages so no one has to write something from scratch under pressure.`,
@@ -288,7 +289,7 @@ export const CATS = [
         arts: [
           { n: 'C7.2.1', t: "Known issue: payments stuck on processing (how to handle)", w: 'Agent' },
           { n: 'C7.2.2', t: "Known issue: statement entries going missing (how to handle)", w: 'Agent' },
-          { n: 'C7.2.3', t: "Known issue: direct debit mandate timeout (how to handle)", w: 'Agent' },
+          { n: 'C7.2.3', t: "Known issue: direct debit mandate timeout during application (how to handle)", w: 'Agent' },
           { n: 'C7.2.4', t: "Known issue: wallet balance not displaying correctly (how to handle)", w: 'Agent' },
         ]
       },
@@ -297,119 +298,43 @@ export const CATS = [
 ];
 
 export const RELS = [
-  {
-    chips: ['C1 — Loans', 'C3 — App access'],
-    title: "If someone can't apply for a loan, check if they can even get into the app first",
-    body: `Before you investigate the loan itself, confirm the person can actually log in and has passed identity verification. A lot of "can't apply for loan" tickets turn out to be login or BVN issues in disguise. The sequence to check is: can they open the app → can they log in → is their identity verified → then look at loan eligibility. Skipping to the loan before confirming the first three wastes time on both sides.`
-  },
-  {
-    chips: ['C1 — Loans', 'C5 — Learning'],
-    title: "Many loan complaints aren't broken — the customer just doesn't know how it works",
-    body: `167 tickets were filed because the person didn't understand the product, not because anything was wrong. If an employee says they "can't take a loan" and everything checks out technically, the issue is often that Marketplace hasn't been explained to them, or they don't know their employer needs to activate EWA first. Pointing them to the right walkthrough article in C5 resolves these without any technical work.`
-  },
-  {
-    chips: ['C1 — Loans', 'C1.4 — Direct debit'],
-    title: "Direct debit is part of the loan journey — not a standalone payments task",
-    body: `Setting up a direct debit mandate is the first thing an employee does after taking a loan, because it is what allows Breeze to deduct repayments automatically from their account each month. If an employee complains that "repayment is not happening" or "my mandate isn't working", that sits in C1.4 — not in payments. Always look at the loan first to understand the repayment context.`
-  },
-  {
-    chips: ['C2 — Payments', 'C1 — Loans'],
-    title: "A failed payroll run often triggers loan complaints at the same time",
-    body: `When payroll fails or is delayed, employees who expected to be paid check their loan eligibility next — and suddenly "salary not credited" (C2) and "loan unavailable" (C1) tickets arrive together. They have the same root cause. If you start seeing both at the same time from the same employer, look at the payroll run first. Fixing C2 typically clears C1 automatically once the salary lands.`
-  },
-  {
-    chips: ['C5 — Learning', 'C2 — Payments', 'C1 — Loans'],
-    title: "Fixing the learning gap reduces payment and loan tickets the most",
-    body: `The 167 learning gap tickets map directly onto the highest-volume categories. Employers who don't know how to run payroll correctly create C2 tickets. Employees who don't know how EWA works create C1 tickets. Every good walkthrough article in C5 takes pressure off C1 and C2 permanently. This is why C5 gets built first in the implementation plan, even though it's not the highest ticket count.`
-  },
-  {
-    chips: ['C6 — Escalation', 'C7 — Known issues'],
-    title: "C6 and C7 work together as a safety net for the whole system",
-    body: `When an agent can't resolve a ticket, C6 tells them what to do next. When the same problem is affecting multiple customers, C7 makes sure agents aren't filing ten separate Engineering tickets for the same bug — and gives them a ready-made message to send customers in the meantime. Together these two topics prevent the support team from being overwhelmed during incidents and make sure Engineering gets clean, useful information instead of noise.`
-  },
+  { chips: ['C1 — Loans', 'C3 — App access'], title: "If someone can't apply for a loan, check if they can even get into the app first", body: "Before you investigate the loan itself, confirm the person can actually log in and has passed identity verification. A lot of 'can't apply for loan' tickets turn out to be login or BVN issues in disguise. The sequence to check is: can they open the app → can they log in → is their identity verified → then look at loan eligibility. Skipping to the loan before confirming the first three wastes time on both sides." },
+  { chips: ['C1.2 — Loan application', 'Direct debit setup'], title: "Direct debit mandate is set up during the loan application — not after", body: "The mandate is a required step inside the application process. The employee cannot complete their loan application without setting up the direct debit, because that is how Breeze will collect repayments. So if an employee says 'my application is stuck' or 'I can't complete the mandate step', that is a C1.2 issue — part of the application, not a separate payments task. After the loan is live, complaints about deductions not happening or the wrong amount being taken sit in C1.4." },
+  { chips: ['C1 — Loans', 'C5 — Learning'], title: "Many loan complaints aren't broken — the customer just doesn't know how it works", body: "167 tickets were filed because the person didn't understand the product, not because anything was wrong. If an employee says they 'can't take a loan' and everything checks out technically, the issue is often that Marketplace hasn't been explained to them, or they don't know their employer needs to activate EWA first. Pointing them to the right walkthrough article in C5 resolves these without any technical work." },
+  { chips: ['C2 — Payments', 'C1 — Loans'], title: "A failed payroll run often triggers loan complaints at the same time", body: "When payroll fails or is delayed, employees who expected to be paid check their loan eligibility next — and suddenly 'salary not credited' (C2) and 'loan unavailable' (C1) tickets arrive together. They have the same root cause. If you start seeing both at the same time from the same employer, look at the payroll run first. Fixing C2 typically clears C1 automatically once the salary lands." },
+  { chips: ['C5 — Learning', 'C2 — Payments', 'C1 — Loans'], title: "Fixing the learning gap reduces payment and loan tickets the most", body: "The 167 learning gap tickets map directly onto the highest-volume categories. Employers who don't know how to run payroll correctly create C2 tickets. Employees who don't know how EWA works create C1 tickets. Every good walkthrough article in C5 takes pressure off C1 and C2 permanently. This is why C5 gets built first in the implementation plan, even though it's not the highest ticket count." },
+  { chips: ['C6 — Escalation', 'C7 — Known issues'], title: "C6 and C7 work together as a safety net for the whole system", body: "When an agent can't resolve a ticket, C6 tells them what to do next. When the same problem is affecting multiple customers, C7 makes sure agents aren't filing ten separate Engineering tickets for the same bug — and gives them a ready-made message to send customers in the meantime. Together these two topics prevent the support team from being overwhelmed during incidents and make sure Engineering gets clean, useful information instead of noise." },
 ];
 
 export const FIXES = [
-  {
-    icon: '⏱',
-    title: "Payroll has been 'processing' for too long",
-    body: [
-      { type: 'p', text: "This is the most common complaint from HR Admins. Here is how to handle it." },
-      { type: 'p', text: "First, check the obvious things:" },
-      { type: 'ol', items: [
-        "Go to the employee list for that payroll run. Look for any employee who has no bank account number on their profile, or whose account number hasn't been validated. Even one missing account can hold up the whole batch.",
-        "For pension payments specifically — the PFA takes 24 to 48 business hours to process. If it's been less than two business days, this is normal. Let the customer know.",
-        "If this is a payroll run that's been processing for more than four hours and all account numbers are confirmed, raise it through the payment escalation guide (C6.1.1). This goes to EF Ops, not Engineering."
-      ]},
-      { type: 'tip', text: "If you're seeing the same 'stuck processing' issue across more than one company at the same time, check C7.2 before raising individual escalations. It may already be a known issue." }
-    ]
-  },
-  {
-    icon: '✋',
-    title: "'Apply for loan' button won't work — or the loan option is missing entirely",
-    body: [
-      { type: 'p', text: "These are two different problems. Diagnose before responding." },
-      { type: 'p', text: "If the button is there but won't respond when tapped: This is a known bug. Ask the customer to close the app fully, clear the cache, and reopen on a Wi-Fi connection rather than mobile data. If it still doesn't work after two tries, file a bug report using C6.2.1 — include the employee's user ID and the name of their employer." },
-      { type: 'p', text: "If the loan option is not showing at all:" },
-      { type: 'ol', items: [
-        "Confirm with the HR Admin that the Marketplace has been switched on for their organisation. This is the most common reason.",
-        "Confirm the employee has completed identity verification (KYC). Employees without a verified identity cannot see loan products.",
-        "Check whether the employee already has an active loan. A second application is blocked until the first is cleared.",
-        "Check the employee's payroll status in HRIS. If their status was recently changed or they are marked as inactive, loan eligibility resets."
-      ]}
-    ]
-  },
-  {
-    icon: '📵',
-    title: "Customer is not receiving their OTP",
-    body: [
-      { type: 'p', text: "This comes up in both login (C3) and loan applications (C1.2.3). The diagnosis is the same for both." },
-      { type: 'ol', items: [
-        "Check the phone number on the account. Ask the customer to confirm it matches exactly what they're looking at. About 40% of OTP complaints are resolved here.",
-        "Ask if the customer has mobile data turned on. Some Nigerian networks — especially MTN — block SMS delivery when data is active. Ask them to turn off data, then request the OTP again.",
-        "Wait a full 60 seconds before using 'Resend OTP'. If the customer keeps tapping resend without waiting, the system rate-limits them and blocks all OTPs for 15 minutes.",
-        "If none of the above works after two attempts, file a C6.2.3 bug report. Include the phone number (masked), the network carrier, how many times OTP was requested, and the time it happened."
-      ]},
-      { type: 'tip', text: "Check C7.2 if multiple customers report OTP issues at the same time — it may be a network-level incident, not individual account problems." }
-    ]
-  },
-  {
-    icon: '🔄',
-    title: "Direct debit mandate setup keeps timing out",
-    body: [
-      { type: 'p', text: "This sits in C1.4 — it is part of the loan repayment setup, not a general payments issue. Try these steps in order before escalating." },
-      { type: 'ol', items: [
-        "Confirm the bank is on the supported list for direct debit on Breeze. Some smaller banks are not supported — if that's the case, the customer needs to use a different account and there's nothing to escalate.",
-        "Timing matters. Bank APIs are busiest between 9am and 12pm on business days. Ask the customer to try again in the evening — the success rate is noticeably higher.",
-        "Check that the BVN linked to the bank account exactly matches the BVN on the Breeze profile. Even a small mismatch causes a silent timeout with no clear error message.",
-        "If two attempts at different times still fail and the bank is supported, raise through C6.1.2 — this is a loan escalation to EF Ops, not Engineering."
-      ]}
-    ]
-  },
-  {
-    icon: '💰',
-    title: "An employee has been paid twice",
-    body: [
-      { type: 'p', text: "Act quickly — recovery gets harder the longer it sits." },
-      { type: 'ol', items: [
-        "Confirm the duplication first. Pull the disbursement log in Breeze Payer and find both transaction entries for the same employee in the same cycle.",
-        "Do not try to reverse the payment yourself through the platform. There is no self-service reversal option. Raise it to EF Ops immediately through C6.1.1, sharing both transaction IDs.",
-        "Let the HR Admin know there are three recovery routes: deducting from the next payroll, asking the employee to transfer back directly, or EF Ops initiating a reversal. EF Ops will advise which is fastest given the situation."
-      ]},
-      { type: 'tip', text: "If this is the second time this has happened for the same employer, note it in C7.2 — a pattern of duplicate payments from the same company may point to a configuration issue that needs Engineering to look at." }
-    ]
-  },
-  {
-    icon: '📄',
-    title: "Statement downloaded but transactions are missing",
-    body: [
-      { type: 'p', text: "This is a known bug that Engineering is aware of. While it's being fixed, here's how to help the customer in the meantime." },
-      { type: 'ol', items: [
-        "Ask the customer to try a shorter date range. Downloading six months at once sometimes drops entries — downloading one month at a time usually brings them all through.",
-        "Try downloading as CSV instead of PDF. The missing entry bug affects the PDF generator more often than the CSV export.",
-        "If the customer needs the statement for official purposes, EF Ops can generate a manual statement with the full transaction history. This is requested through the internal support channel, not Engineering.",
-        "When filing the C6.2.4 bug report, note exactly which dates and amounts are missing. The more specific, the faster Engineering can fix it."
-      ]}
-    ]
-  },
+  { icon: '⏱', title: "Payroll has been 'processing' for too long", steps: [
+    { type: 'p', text: "This is the most common complaint from HR Admins. Here is how to handle it." },
+    { type: 'ol', items: ["Go to the employee list for that payroll run. Look for any employee who has no bank account number on their profile, or whose account number hasn't been validated. Even one missing account can hold up the whole batch.", "For pension payments specifically — the PFA takes 24 to 48 business hours to process. If it's been less than two business days, this is normal. Let the customer know.", "If this is a payroll run that's been processing for more than four hours and all account numbers are confirmed, raise it through the payment escalation guide (C6.1.1). This goes to EF Ops, not Engineering."] },
+    { type: 'tip', text: "If you're seeing the same 'stuck processing' issue across more than one company at the same time, check C7.2 before raising individual escalations. It may already be a known issue." }
+  ]},
+  { icon: '✋', title: "'Apply for loan' button won't work — or the loan option is missing entirely", steps: [
+    { type: 'p', text: "These are two different problems. Diagnose before responding." },
+    { type: 'p', text: "If the button is there but won't respond when tapped: close the app fully, clear the cache, reopen on Wi-Fi. If still broken after two tries, file a bug report using C6.2.1 with the employee's user ID and employer name." },
+    { type: 'p', text: "If the loan option is not showing at all:" },
+    { type: 'ol', items: ["Confirm the Marketplace has been switched on for their organisation — this is the most common reason.", "Confirm the employee has completed identity verification (KYC).", "Check whether the employee already has an active loan — a second application is blocked until the first is cleared.", "Check the employee's payroll status in HRIS — if recently changed or inactive, eligibility resets."] }
+  ]},
+  { icon: '🔄', title: "Direct debit mandate failing during loan application", steps: [
+    { type: 'p', text: "The direct debit mandate is a required step inside the loan application. If it fails, the application cannot complete. Try these steps before escalating." },
+    { type: 'ol', items: ["Confirm the bank is on the supported list for direct debit on Breeze. Some smaller banks are not supported — the customer needs to use a different account.", "Timing matters. Bank APIs are busiest between 9am and 12pm on business days. Ask the customer to try again in the evening.", "Check that the BVN linked to the bank account exactly matches the BVN on the Breeze profile. Even a small mismatch causes a silent timeout with no error message.", "If two attempts at different times still fail and the bank is supported, raise through C6.1.2 — this is a loan escalation to EF Ops, not Engineering."] },
+    { type: 'tip', text: "This issue is logged in C7.2.3. Check there first — if it's a known active issue, use the outage message template in C7.1.2 to respond to the customer." }
+  ]},
+  { icon: '📵', title: "Customer is not receiving their OTP", steps: [
+    { type: 'p', text: "This comes up in both login (C3) and loan applications (C1.2.3). The diagnosis is the same for both." },
+    { type: 'ol', items: ["Check the phone number on the account — about 40% of OTP complaints are resolved here.", "Ask if mobile data is turned on. Some Nigerian networks — especially MTN — block SMS when data is active. Turn off data, then request OTP again.", "Wait a full 60 seconds before using 'Resend OTP'. Repeated taps trigger a rate limit that blocks all OTPs for 15 minutes.", "If still not received after two attempts, file a C6.2.3 bug report with the phone number (masked), network carrier, number of attempts, and timestamp."] },
+    { type: 'tip', text: "Check C7.2 if multiple customers report OTP issues at the same time — it may be a network-level incident." }
+  ]},
+  { icon: '💰', title: "An employee has been paid twice", steps: [
+    { type: 'p', text: "Act quickly — recovery gets harder the longer it sits." },
+    { type: 'ol', items: ["Confirm the duplication — pull the disbursement log in Breeze Payer and find both transaction entries for the same employee in the same cycle.", "Do not try to reverse the payment yourself. There is no self-service reversal. Raise to EF Ops immediately through C6.1.1, sharing both transaction IDs.", "Let the HR Admin know the three recovery routes: deduct from next payroll, ask employee to transfer back, or EF Ops initiates a reversal. EF Ops will advise which is fastest."] },
+    { type: 'tip', text: "If this has happened before for the same employer, note it in C7.2 — a pattern may point to a configuration issue for Engineering." }
+  ]},
+  { icon: '📄', title: "Statement downloaded but transactions are missing", steps: [
+    { type: 'p', text: "This is a known bug Engineering is aware of. Here's how to help the customer in the meantime." },
+    { type: 'ol', items: ["Ask the customer to try a shorter date range — one month at a time instead of six.", "Try CSV instead of PDF — the missing entry bug affects the PDF generator more often.", "For official purposes, EF Ops can generate a manual statement with full transaction history. Request through the internal support channel, not Engineering.", "When filing C6.2.4, note exactly which dates and amounts are missing — the more specific, the faster Engineering can fix it."] }
+  ]},
 ];
