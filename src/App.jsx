@@ -3,6 +3,7 @@ import { CATS, RELS, FIXES } from './data'
 import { ARTICLES } from './articles'
 import { exportFullKB } from './export'
 import ArticleModal from './ArticleModal'
+import GenerateArticles from './GenerateArticles'
 import './App.css'
 
 const totalArticles = CATS.reduce((a, c) => a + c.subs.reduce((b, s) => b + s.arts.length, 0), 0)
@@ -138,6 +139,7 @@ export default function App() {
   const [filter, setFilter] = useState('all')
   const [activeArticle, setActiveArticle] = useState(null)
   const [exporting, setExporting] = useState(false)
+  const [showGenerator, setShowGenerator] = useState(false)
 
   const handleExport = async () => {
     setExporting(true)
@@ -167,20 +169,31 @@ export default function App() {
       {activeArticle && (
         <ArticleModal article={ARTICLES[activeArticle]} onClose={() => setActiveArticle(null)} />
       )}
+      {showGenerator && (
+        <GenerateArticles onDone={() => setShowGenerator(false)} />
+      )}
 
       <header className="header">
         <div className="header-inner">
           <div className="header-top-row">
             <div className="eyebrow">Breeze Embedded Finance</div>
-            <button className="btn-export-full" onClick={handleExport} disabled={exporting}>
-              {exporting ? (
-                <><span className="export-spinner" /> Generating…</>
-              ) : (
-                <><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                    <path d="M7.5 1v8M4.5 6.5l3 3 3-3M2 12h11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg> Export to Word</>
-              )}
-            </button>
+            <div style={{display:'flex',gap:'8px'}}>
+              <button className="btn-generate" onClick={() => setShowGenerator(true)}>
+                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                  <path d="M7.5 1v5M7.5 9v5M1 7.5h5M9 7.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+                Generate articles
+              </button>
+              <button className="btn-export-full" onClick={handleExport} disabled={exporting}>
+                {exporting ? (
+                  <><span className="export-spinner" /> Generating…</>
+                ) : (
+                  <><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M7.5 1v8M4.5 6.5l3 3 3-3M2 12h11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg> Export to Word</>
+                )}
+              </button>
+            </div>
           </div>
           <h1 className="h-title">Knowledge Base</h1>
           <p className="h-sub">Built from 1,698 real support tickets · Phase 1.1</p>
