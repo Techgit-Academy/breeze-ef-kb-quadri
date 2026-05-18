@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { CATS, RELS, FIXES } from './data'
 import { ARTICLES } from './articles'
+import { TICKET_EVIDENCE } from './ticketEvidence'
 import { exportFullKB } from './export'
 import ArticleModal from './ArticleModal'
-import GenerateArticles from './GenerateArticles'
 import './App.css'
 
 const totalArticles = CATS.reduce((a, c) => a + c.subs.reduce((b, s) => b + s.arts.length, 0), 0)
@@ -47,15 +47,20 @@ function FixBody({ body }) {
 
 function ArticleRow({ art, onOpen }) {
   const hasContent = !!ARTICLES[art.n]
+  const hasEvidence = !!(TICKET_EVIDENCE[art.n]?.length)
+  const isClickable = hasContent || hasEvidence
+
   return (
-    <div className={`art-row${hasContent?' art-row-clickable':''}`}
-      onClick={() => hasContent && onOpen(art.n)}
-      title={hasContent ? 'Click to read article' : 'Article coming soon'}>
+    <div
+      className={`art-row${isClickable ? ' art-row-clickable' : ''}`}
+      onClick={() => isClickable && onOpen({ id: art.n, title: art.t, audience: art.w })}
+    >
       <span className="art-num">{art.n}</span>
       <span className="art-title">
         {art.t}
-        {hasContent  && <span className="art-ready">Read →</span>}
-        {!hasContent && <span className="art-soon">Coming soon</span>}
+        {hasContent   && <span className="art-ready">Read →</span>}
+        {!hasContent && hasEvidence  && <span className="art-evidence">View tickets →</span>}
+        {!hasContent && !hasEvidence && <span className="art-soon">Coming soon</span>}
       </span>
       <span className="art-who" style={whoStyle(art.w)}>{art.w}</span>
     </div>
@@ -88,8 +93,7 @@ function CategoryCard({ cat, isFiltered, onOpen }) {
               {openSubs[sub.id] && (
                 <div className="art-list">
                   <p className="sub-note">{sub.note}</p>
-                  {sub.arts.map(art => <ArticleRow key={art.n} art={art} onOpen={onOpen} />)}
-                </div>
+                  {sub.arts.map(art => <ArticleRow key={art.n} art={art} onOpen={onOpen} />)}                </div>
               )}
             </div>
           ))}
@@ -139,7 +143,6 @@ export default function App() {
   const [filter, setFilter] = useState('all')
   const [activeArticle, setActiveArticle] = useState(null)
   const [exporting, setExporting] = useState(false)
-  const [showGenerator, setShowGenerator] = useState(false)
 
   const handleExport = async () => {
     setExporting(true)
@@ -167,33 +170,26 @@ export default function App() {
   return (
     <div className="app">
       {activeArticle && (
-        <ArticleModal article={ARTICLES[activeArticle]} onClose={() => setActiveArticle(null)} />
-      )}
-      {showGenerator && (
-        <GenerateArticles onDone={() => setShowGenerator(false)} />
+        <ArticleModal
+          article={ARTICLES[activeArticle.id] || activeArticle}
+          isEvidenceOnly={!ARTICLES[activeArticle.id]}
+          onClose={() => setActiveArticle(null)}
+        />
       )}
 
       <header className="header">
         <div className="header-inner">
           <div className="header-top-row">
             <div className="eyebrow">Breeze Embedded Finance</div>
-            <div style={{display:'flex',gap:'8px'}}>
-              <button className="btn-generate" onClick={() => setShowGenerator(true)}>
-                <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                  <path d="M7.5 1v5M7.5 9v5M1 7.5h5M9 7.5h5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-                Generate articles
-              </button>
-              <button className="btn-export-full" onClick={handleExport} disabled={exporting}>
-                {exporting ? (
-                  <><span className="export-spinner" /> Generating…</>
-                ) : (
-                  <><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
-                      <path d="M7.5 1v8M4.5 6.5l3 3 3-3M2 12h11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
-                    </svg> Export to Word</>
-                )}
-              </button>
-            </div>
+            <button className="btn-export-full" onClick={handleExport} disabled={exporting}>
+              {exporting ? (
+                <><span className="export-spinner" /> Generating…</>
+              ) : (
+                <><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                    <path d="M7.5 1v8M4.5 6.5l3 3 3-3M2 12h11" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg> Export to Word</>
+              )}
+            </button>
           </div>
           <h1 className="h-title">Knowledge Base</h1>
           <p className="h-sub">Built from 1,698 real support tickets · Phase 1.1</p>
@@ -236,8 +232,7 @@ export default function App() {
                 <CategoryCard key={cat.id} cat={cat}
                   isFiltered={filter!=='all' && filter!==cat.id}
                   onOpen={setActiveArticle} />
-              ))}
-            </div>
+              ))}            </div>
           </>
         )}
 

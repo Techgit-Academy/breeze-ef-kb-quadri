@@ -319,3 +319,33 @@ body { font-family: 'DM Sans', 'Segoe UI', system-ui, sans-serif; background: #F
   padding: 8px 16px; border-radius: 20px; cursor: pointer; transition: all .15s;
 }
 .btn-generate:hover { background: rgba(255,255,255,.22); }
+
+/* ── TICKET EVIDENCE ── */
+.art-evidence { font-size: 11px; font-weight: 600; color: #6A1B9A; white-space: nowrap; }
+
+.evidence-list { border: 1px solid #E5E3DE; border-radius: 10px; overflow: hidden; }
+.evidence-item { border-bottom: 1px solid #F0EDE8; }
+.evidence-item:last-child { border-bottom: none; }
+.evidence-header {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 14px; cursor: pointer; user-select: none;
+  transition: background .12s;
+}
+.evidence-header:hover { background: #FAFAF8; }
+.evidence-cat {
+  font-size: 10px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: .06em; color: #0D7C8F;
+  background: #EBF8F8; padding: 2px 8px; border-radius: 20px;
+  flex-shrink: 0; white-space: nowrap;
+}
+.evidence-name { font-size: 13px; color: #222; flex: 1; line-height: 1.4; }
+.evidence-desc {
+  padding: 10px 14px 14px; font-size: 13px; color: #555;
+  line-height: 1.7; background: #FAFAF8;
+  border-top: 1px solid #F0EDE8;
+}
+.no-evidence-box {
+  background: #FAFAF8; border: 1px solid #E5E3DE; border-radius: 10px;
+  padding: 16px; text-align: center;
+}
+.no-evidence-box p { font-size: 13px; color: #888; line-height: 1.6; margin: 0; }
